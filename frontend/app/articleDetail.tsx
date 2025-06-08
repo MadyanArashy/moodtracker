@@ -1,14 +1,14 @@
-import React from 'react';
-import { Text, View, Image, ScrollView, Dimensions, Linking } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
+import React from 'react';
+import { Dimensions, Image, Linking, ScrollView, Text, View } from 'react-native';
 import tw from 'twrnc';
 
-import { ThemedView } from '@/components/ThemedView';
 import { ThemedText } from '@/components/ThemedText';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { ThemedView } from '@/components/ThemedView';
 import { Colors } from '@/constants/Colors';
-import { AntDesign, FontAwesome, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
+import { useColorScheme } from '@/hooks/useColorScheme';
+import { AntDesign, FontAwesome } from '@expo/vector-icons';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 type ArticleItem = {
   source: {

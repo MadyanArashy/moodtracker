@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "moodtracker",
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
@@ -45,7 +45,8 @@
     "react-native-vector-icons": "^10.2.0",
     "react-native-web": "~0.20.0",
     "react-native-webview": "13.13.5",
-    "twrnc": "^4.7.0"
+    "twrnc": "^4.7.0",
+    "@react-native-picker/picker": "2.11.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

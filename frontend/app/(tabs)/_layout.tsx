@@ -40,9 +40,18 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
+          title: 'Moodtracker',
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="house.fill" color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="lifehub"
+        options={{
+          title: 'Lifehub',
+          tabBarIcon: ({ color }) => (
+            <IconSymbol size={28} name="chevron.left.forwardslash.chevron.right" color={color} />
           ),
         }}
       />
@@ -56,7 +65,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="(marvel)"
+        name="(mal)"
         options={{
           title: 'Trivia',
           tabBarIcon: ({ color }) => (
