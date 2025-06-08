@@ -18,10 +18,11 @@ type Props = {
   task: Task,
   editFunction: () => void,
   deleteFunction: () => void,
-  style?: StyleProp<View>
+  style?: StyleProp<View>,
+  type: 'lifehub' | 'task'
 }
 
-const TaskComponent = ({task, editFunction, deleteFunction}: Props) => {
+const TaskComponent = ({task, editFunction, deleteFunction, type}: Props) => {
   const colorScheme = useColorScheme();
   const colors = Colors[colorScheme ?? 'light'];
   const [checked, setChecked] = useState(task.status);
@@ -44,11 +45,11 @@ const TaskComponent = ({task, editFunction, deleteFunction}: Props) => {
   const currentColor = categoryColors[colorScheme ?? 'light']
     let selectedColor = currentColor.default
     switch (task.category) {
-    case 'senang':
+    case 'senang':case 'kerja':
       selectedColor = currentColor.senang;break;
-    case 'sedih':
+    case 'sedih':case 'belajar':
       selectedColor = currentColor.sedih;break;
-    case 'stress':
+    case 'stress':case 'pribadi':
       selectedColor = currentColor.stress;break;
     default:
       selectedColor = currentColor.default;break;
@@ -62,7 +63,7 @@ const TaskComponent = ({task, editFunction, deleteFunction}: Props) => {
     const nextChecked = !checked;
     setChecked(nextChecked);
     try {
-      await axios.patch(`${API_URL}/api/task/${task.id}`, { status: nextChecked });
+      await axios.patch(`${API_URL}/api/${type}/${task.id}`, { status: nextChecked });
     } catch (error) {
       console.error(error);
       setChecked(checked);
@@ -70,7 +71,7 @@ const TaskComponent = ({task, editFunction, deleteFunction}: Props) => {
   };
 
   return (
-    <View style={tw`relative`}>
+    <View>
       <AnimatedButton
         animationType="color"
         activeColor={colors.highlight}

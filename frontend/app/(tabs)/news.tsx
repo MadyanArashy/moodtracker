@@ -38,7 +38,17 @@ export default function News() {
     else setIsLoadingMore(true);
 
     const response = await axios.get<Article>(
-      `https://newsapi.org/v2/everything?q=marvel&sortBy=date&page=${pageNumber}&pageSize=${pageSize}&apiKey=${API_KEY}`
+      'https://newsapi.org/v2/everything', {
+        params: {
+          q: 'anime',
+          sortBy: 'relevancy',
+          page: pageNumber,
+          pageSize: pageSize,
+        },
+        headers: {
+          'X-Api-Key': API_KEY
+        }
+      }
     );
 
     if (pageNumber === 1) setArticles(response.data.articles);

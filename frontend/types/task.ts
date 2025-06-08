@@ -13,6 +13,10 @@ export type NewTask = {
   date: string,
 }
 
-export type Category = {
+export type MoodtrackerCategories = {
   name: 'senang' | 'sedih' | 'stress' | ''
+}
+
+export type LifehubCategories = {
+  name: 'pribadi' | 'kerja' | 'belajar' | ''
 }

@@ -1,10 +1,10 @@
 {
   "expo": {
     "name": "MoodTracker",
-    "slug": "frontend",
+    "slug": "moodtracker",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/lifehub-logo.png",
+    "icon": "./assets/images/moodtracker-logo.png",
     "scheme": "moodtracker",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -15,7 +15,7 @@
       "package": "com.madyanarashy.moodtracker",
       "edgeToEdgeEnabled": true,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/lifehub-logo-transparent.png",
+        "foregroundImage": "./assets/images/moodtracker-logo-transparent.png",
         "backgroundColor": "#ffffff"
       }
     },
@@ -29,7 +29,7 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/lifehub-logo.png",
+          "image": "./assets/images/moodtracker-logo.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
@@ -42,7 +42,7 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "1e8d0f96-b1e9-45dd-9a1b-3a9c248f12d5"
+        "projectId": "694d309a-30cb-46ae-88f7-b72d70903e61"
       }
     },
     "owner": "madyan-arashy"

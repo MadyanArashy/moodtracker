@@ -16,9 +16,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import AnimatedButton from '@/components/AnimatedButton';
 import TaskComponent from '@/components/TaskComponent';
 import DatePicker from 'react-native-date-picker';
-import { Task, NewTask, MoodtrackerCategories } from '@/types/task';
+import { Task, NewTask, LifehubCategories } from '@/types/task';
 
-export default function HomeScreen() {
+export default function LifehubPage() {
   // API url dan warna untuk styling
   const API_URL = Environment.API_URL;
   const colorScheme = useColorScheme();
@@ -41,14 +41,14 @@ export default function HomeScreen() {
 
   // Array variabel dan state dropdown category
   const CATEGORIES = [
-    {label: 'Senang', value: 'senang'},
-    {label: 'Sedih', value: 'sedih'},
-    {label: 'Stress', value: 'stress'},
+    {label: 'Kerja', value: 'kerja'},
+    {label: 'Belajar', value: 'belajar'},
+    {label: 'Pribadi', value: 'pribadi'},
   ]
   const [dropdown, setDropdown] = useState(false);
 
   // Filter kategori
-  const [filter, setFilter] = useState<MoodtrackerCategories['name']>('');
+  const [filter, setFilter] = useState<LifehubCategories['name']>('');
 
   useEffect(() => {
     getTasks();
@@ -56,7 +56,7 @@ export default function HomeScreen() {
 
   const getTasks = async() => {
     try {
-      const response = await axios.get(`${API_URL}/api/task`)
+      const response = await axios.get(`${API_URL}/api/lifehub`)
       setTaskItems(response.data);
     } catch (err) {
       console.error(err);
@@ -78,7 +78,7 @@ export default function HomeScreen() {
       };
       clearInputs();
       try {
-        await axios.post<Task>(`${API_URL}/api/task`, newTask);
+        await axios.post<Task>(`${API_URL}/api/lifehub`, newTask);
         await getTasks();
         setRefreshing(false);
       } catch (err) {
@@ -168,16 +168,15 @@ export default function HomeScreen() {
     setIsEditing(false);
     clearInputs();
   }
-
   return (
     <ThemedView style={tw`flex-1`}>
       <View style={{ backgroundColor: colors.gray1, paddingTop: 32 }}>
         <View style={tw`w-full flex-row items-center justify-between mb-2 px-4`}>
           {
             colorScheme == 'light' ?
-            <Image source={require('@/assets/images/moodtracker-horizontal-light.png')} style={tw`w-1/2 h-full`} resizeMode='cover'/>
+            <Image source={require('@/assets/images/lifehub-horizontal-light.png')} style={tw`w-1/2 h-full`} resizeMode='cover'/>
             :
-            <Image source={require('@/assets/images/moodtracker-horizontal-dark.png')} style={tw`w-1/2 h-full`} resizeMode='cover'/>
+            <Image source={require('@/assets/images/lifehub-horizontal-dark.png')} style={tw`w-1/2 h-full`} resizeMode='cover'/>
           }
           <AnimatedButton onPress={() => setDrawer(!drawer)} animationType='opacity'>
             <View style={[tw`p-1 rounded-lg`, {backgroundColor: colors.gray4}]}>
@@ -301,14 +300,14 @@ export default function HomeScreen() {
       </View>
       { isLoaded && !refreshing ?
         <>
-          <ThemedText  style={tw`px-4 text-xl font-bold my-2`}>
+          <ThemedText  style={tw`px-4 text-xl font-bold mb-2`}>
             Category Filter:
           </ThemedText>
-          <View style={tw`flex-row gap-2 mb-2 px-4`}>
-            {['', 'senang', 'sedih', 'stress'].map((cat) => (
+          <View style={tw`flex-row gap-2 mb-4 px-4`}>
+            {['', 'kerja', 'belajar', 'pribadi'].map((cat) => (
               <AnimatedButton
                 key={cat}
-                onPress={() => setFilter(cat as MoodtrackerCategories['name'])}
+                onPress={() => setFilter(cat as LifehubCategories['name'])}
                 style={[
                   tw`px-4 py-2 rounded-xl`,
                   filter === cat ? {backgroundColor: colors.tint} : {backgroundColor: colors.gray2},
@@ -325,7 +324,7 @@ export default function HomeScreen() {
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
               <TaskComponent
-                type='task'
+                type={'lifehub'}
                 task={item}
                 editFunction={() => startEdit(item)}
                 deleteFunction={() => handleDelete(item.id)}
