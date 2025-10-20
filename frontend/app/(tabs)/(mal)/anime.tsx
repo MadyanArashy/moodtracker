@@ -116,6 +116,11 @@ export default function AnimePage() {
             </View>
           </View>
         </ThemedView>
+        <View>
+          <ThemedText style={{ color: colors.disabledText }}>
+            {anime?.synopsis}
+          </ThemedText>
+        </View>
       </ScrollView>
       : <ActivityIndicator size={'large'}/>
       }
