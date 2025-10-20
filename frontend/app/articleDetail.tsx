@@ -78,7 +78,7 @@ export default function ArticleDetail() {
               <FontAwesome name='user-circle' size={18} /> <Text style={tw`font-bold`}>Author: </Text>{article.author}
             </ThemedText>
             <ThemedText style={{ color: colors.icon }}>
-              <AntDesign name='earth' size={18}/> <Text style={tw`font-bold`}>Source: </Text>{article.source.name}
+              <AntDesign name='compass' size={18}/> <Text style={tw`font-bold`}>Source: </Text>{article.source.name}
             </ThemedText>
             <ThemedText style={{ color: colors.icon }}>
               <AntDesign name='calendar' size={18}/> <Text style={tw`font-bold`}>Published: </Text>
